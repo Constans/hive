@@ -102,7 +102,7 @@ class StorageBackendJs extends StorageBackend {
   Future<List<dynamic>> getKeys({bool cursor = false}) {
    var store = getStore(false);
 
-   if (store.getAllKeys is Function && !cursor) {
+   if(store.hasOwnProperty('getAllKeys') && !cursor) {
      var completer = Completer<List<dynamic>>();
      var request = store.getAllKeys(null);
      request.onSuccess.listen((_) {
@@ -122,7 +122,7 @@ class StorageBackendJs extends StorageBackend {
   Future<Iterable<dynamic>> getValues({bool cursor = false}) {
      var store = getStore(false);
 
-     if (store.getAll is Function && !cursor) {
+     if (store.hasOwnProperty('getAll') && !cursor) {
        var completer = Completer<Iterable<dynamic>>();
        var request = store.getAll(null);
        request.onSuccess.listen((_) {
