@@ -104,7 +104,7 @@ class StorageBackendJs extends StorageBackend {
 
    if(hasProperty(store, 'getAllKeys') && !cursor) {
      var completer = Completer<List<dynamic>>();
-     var request = store.getAllKeys(null);
+     var request = getStore(false).getAllKeys(null);
      request.onSuccess.listen((_) {
        completer.complete(request.result as List<dynamic>);
      });
